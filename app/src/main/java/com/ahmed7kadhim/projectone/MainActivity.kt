@@ -12,6 +12,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.NestedScrollView
 
 class MainActivity : AppCompatActivity() {
+    companion object {
+        private const val ROTARY_SCROLL_FACTOR = 60
+        private const val PREFS_NAME = "calculator"
+    }
+
     private lateinit var expressionView: TextView
     private lateinit var resultView: TextView
     private lateinit var scrollContainer: NestedScrollView
@@ -41,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             event.isFromSource(InputDevice.SOURCE_ROTARY_ENCODER)
         ) {
             val delta = -event.getAxisValue(MotionEvent.AXIS_SCROLL)
-            scrollContainer.scrollBy(0, (delta * 60).toInt())
+            scrollContainer.scrollBy(0, (delta * ROTARY_SCROLL_FACTOR).toInt())
             return true
         }
         return super.onGenericMotionEvent(event)
@@ -110,7 +115,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun saveLastResult() {
-        getSharedPreferences("calculator", Context.MODE_PRIVATE)
+        getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
             .edit()
             .putString("expression", engine.expressionText())
             .putString("result", engine.resultText())
@@ -118,7 +123,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun restoreLastResult() {
-        val prefs = getSharedPreferences("calculator", Context.MODE_PRIVATE)
+        val prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         val expression = prefs.getString("expression", "") ?: ""
         val result = prefs.getString("result", "0") ?: "0"
         engine.restore(expression, result)

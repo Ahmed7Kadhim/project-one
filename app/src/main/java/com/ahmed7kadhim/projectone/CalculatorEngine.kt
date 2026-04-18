@@ -5,6 +5,7 @@ import java.math.MathContext
 import java.math.RoundingMode
 
 private const val ERROR = "Error"
+private const val DIVISION_PRECISION = 16
 
 enum class Operator(val symbol: String) {
     ADD("+"),
@@ -115,7 +116,7 @@ class CalculatorEngine {
             Operator.MULTIPLY -> left * right
             Operator.DIVIDE -> {
                 if (right.compareTo(BigDecimal.ZERO) == 0) return null
-                left.divide(right, MathContext(16, RoundingMode.HALF_UP))
+                left.divide(right, MathContext(DIVISION_PRECISION, RoundingMode.HALF_UP))
             }
             Operator.MODULO -> {
                 if (right.compareTo(BigDecimal.ZERO) == 0) return null
