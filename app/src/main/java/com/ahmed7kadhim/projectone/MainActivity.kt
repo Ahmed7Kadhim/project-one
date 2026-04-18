@@ -124,8 +124,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun restoreLastResult() {
         val prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        val expression = prefs.getString("expression", "") ?: ""
-        val result = prefs.getString("result", "0") ?: "0"
+        val expression = prefs.getString("expression", "").orEmpty()
+        val result = prefs.getString("result", "0").orEmpty().ifBlank { "0" }
         engine.restore(expression, result)
     }
 }

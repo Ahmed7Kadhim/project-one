@@ -134,11 +134,13 @@
             <Button
                 android:id="@+id/btn0"
                 style="@style/CalculatorButton"
+                android:layout_columnSpan="2"
                 android:text="0" />
 
             <Button
                 android:id="@+id/btnDot"
                 style="@style/CalculatorButton"
+                android:layout_columnSpan="2"
                 android:text="." />
         </GridLayout>
     </androidx.core.widget.NestedScrollView>
