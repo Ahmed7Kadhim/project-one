@@ -49,7 +49,6 @@
             android:alignmentMode="alignMargins"
             android:columnCount="4"
             android:paddingTop="8dp"
-            android:rowCount="5"
             android:useDefaultMargins="true">
 
             <Button
