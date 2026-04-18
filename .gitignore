@@ -2,3 +2,10 @@
 task.txt
 *.exe
 !app2.exe
+
+# Android/Gradle
+.gradle/
+local.properties
+**/build/
+.idea/
+*.iml
