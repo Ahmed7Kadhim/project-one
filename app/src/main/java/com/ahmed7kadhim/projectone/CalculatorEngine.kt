@@ -138,10 +138,6 @@ class CalculatorEngine {
 
     private fun format(value: BigDecimal): String {
         val stripped = value.stripTrailingZeros()
-        return if (stripped.scale() <= 0) {
-            stripped.toPlainString()
-        } else {
-            stripped.toPlainString()
-        }
+        return stripped.toPlainString()
     }
 }
