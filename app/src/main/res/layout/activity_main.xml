@@ -141,16 +141,6 @@
                 android:id="@+id/btnDot"
                 style="@style/CalculatorButton"
                 android:text="." />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_columnWeight="1" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_columnWeight="1" />
         </GridLayout>
     </androidx.core.widget.NestedScrollView>
 
